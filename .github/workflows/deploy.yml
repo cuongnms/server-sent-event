@@ -10,6 +10,9 @@ jobs:
     if: github.actor == 'cuongnms'
 
     steps:
+      - name: Check whoami
+        run: whoami
+
       - name: Checkout
         uses: actions/checkout@v4
 
