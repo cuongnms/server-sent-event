@@ -1,0 +1,29 @@
+name: Server sent event CI/CD 
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    if: github.actor == 'cuongnms'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Build binary
+        run: |
+          go build -o server-sent-event .
+
+      - name: Deploy app
+        run: |
+          sudo systemctl stop server-sent-event || true
+          sudo cp ./myapp /opt/go/server-sent-event
+          sudo systemctl start server-sent-event
