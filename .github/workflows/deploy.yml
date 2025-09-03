@@ -13,6 +13,9 @@ jobs:
       - name: Check whoami
         run: whoami
 
+      - name: Debug sudo
+        run: sudo -n -l
+
       - name: Checkout
         uses: actions/checkout@v4
 
