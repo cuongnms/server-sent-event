@@ -44,7 +44,7 @@ func handleEvents(w http.ResponseWriter, r *http.Request) {
 		defer close(msgChan)
 
 		// random delay 1-5s
-		msgChan <- num + 2
+		msgChan <- num + 3
 	}()
 
 	// Lắng nghe context để biết khi client disconnect
