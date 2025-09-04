@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 func main() {
@@ -44,6 +45,7 @@ func handleEvents(w http.ResponseWriter, r *http.Request) {
 		defer close(msgChan)
 
 		// random delay 1-5s
+		time.Sleep(3*time.Second)
 		msgChan <- num + 3
 	}()
 
