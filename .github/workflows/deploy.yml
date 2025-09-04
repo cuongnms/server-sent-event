@@ -10,12 +10,6 @@ jobs:
     if: github.actor == 'cuongnms'
 
     steps:
-      - name: Check whoami
-        run: whoami
-
-      - name: Debug sudo
-        run: sudo -n -l
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -30,6 +24,7 @@ jobs:
 
       - name: Deploy app
         run: |
-          sudo -n /usr/bin/systemctl stop server-sent-event || true
-          sudo -n cp ./server-sent-event /opt/go/server-sent-event
-          sudo -n /usr/bin/systemctl start server-sent-event
+          pwd
+          sudo /usr/bin/systemctl stop server-sent-event || true
+          sudo cp ./server-sent-event /opt/go/server-sent-event
+          sudo /usr/bin/systemctl start server-sent-event
