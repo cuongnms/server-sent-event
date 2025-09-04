@@ -20,11 +20,12 @@ jobs:
 
       - name: Build binary
         run: |
+          pwd
           go build -o server-sent-event .
 
       - name: Deploy app
         run: |
           pwd
-          sudo /usr/bin/systemctl stop server-sent-event || true
-          sudo cp ./server-sent-event /opt/go/server-sent-event
-          sudo /usr/bin/systemctl start server-sent-event
+          sudo -n /usr/bin/systemctl stop server-sent-event || true
+          sudo -n cp ./server-sent-event /opt/go/server-sent-event
+          sudo -n /usr/bin/systemctl start server-sent-event
