@@ -26,6 +26,8 @@ func handleEvents(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Error:", err)
 		return
 	}
+	w.Header().Set("Access-Control-Allow-Origin", "http://192.168.0.103:3000")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")
