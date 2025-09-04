@@ -64,7 +64,7 @@ func handleEvents(w http.ResponseWriter, r *http.Request) {
 				return // channel đóng => dừng
 			}
 			// Gửi event
-			fmt.Fprintf(w, "data: %d\nDone\n", num)
+			fmt.Fprintf(w, "data: %d\nDone\n\n", num)
 			flusher.Flush()
 		}
 	}
